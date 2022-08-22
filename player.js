@@ -10,7 +10,9 @@ for (const selectBtn of btnSelects) {
     PlayerCount++;
     if (PlayerCount > 5) {
       alert("You can selected only five player ");
-    } else {
+    }
+    
+    else {
       const selectedPlayer = SelectedPlayer(inner);
       selectedPlayerList.appendChild(selectedPlayer);
       inner.target.style.backgroundColor = "yellow";
@@ -36,10 +38,14 @@ function SelectedId(inner) {
   const calBtn = document.getElementById("cal-btn");
   const  expensisAll = document.getElementById("expensis");
 
+
+
 calBtn.addEventListener("click", (inner) => {
     if (playerAll.value == "" || PlayerCount === 0) {
       alert("Enter any player ");
-    } else {
+    } 
+    
+    else {
       const perPlayerExpense =+ playerAll.value;
       let expense =
         PlayerCount > 5 
@@ -47,5 +53,17 @@ calBtn.addEventListener("click", (inner) => {
           : PlayerCount * perPlayerExpense;
           expensisAll.innerText = `${expense}`;
     }
-  });
+  })
+   
+  const manageId = document.getElementById("manageInput");
+  const coachId = document.getElementById("coachInput");
+
+  const calTotalBtn = document.getElementById("calTotalBtn");
+  const PlayerEx = document.getElementById("totalMoney");
   
+  calTotalBtn.addEventListener("click", (inner) => {
+    if (manageId.value == "" || coachId.value == "") {
+      alert("Enter manager & coach salary");
+    } 
+    
+  });
