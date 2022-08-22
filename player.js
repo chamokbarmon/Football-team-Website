@@ -46,11 +46,11 @@ calBtn.addEventListener("click", (inner) => {
     } 
     
     else {
-      const perPlayerExpense =+ playerAll.value;
+      const PlayerExpense =+ playerAll.value;
       let expense =
         PlayerCount > 5 
-        ? 5 * perPlayerExpense
-          : PlayerCount * perPlayerExpense;
+        ? 5 * PlayerExpense
+          : PlayerCount * PlayerExpense;
           expensisAll.innerText = `${expense}`;
     }
   })
@@ -65,5 +65,16 @@ calBtn.addEventListener("click", (inner) => {
     if (manageId.value == "" || coachId.value == "") {
       alert("Enter manager & coach salary");
     } 
+    else {
+        let PlayerExpense = +playerAll.value;
+        let expensisAll =
+            PlayerCount > 5
+            ? 5 * PlayerExpense
+            : PlayerCount * PlayerExpense;
+        let  coachValue = +coachId.value;
+        let managerValue = +manageId.value;
     
+        let totalExpenses = expensisAll + managerValue + coachValue;
+        PlayerEx.innerText = `${totalExpenses}`;
+      }
   });
