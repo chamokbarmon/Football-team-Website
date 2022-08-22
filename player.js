@@ -63,7 +63,7 @@ calBtn.addEventListener("click", (inner) => {
   
   calTotalBtn.addEventListener("click", (inner) => {
     if (manageId.value == "" || coachId.value == "") {
-      alert("Enter manager & coach salary");
+      alert("Enter your  salary ");
     } 
     else {
         let PlayerExpense = +playerAll.value;
