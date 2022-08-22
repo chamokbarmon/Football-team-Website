@@ -1,38 +1,51 @@
-const arr = [];
-function btnClick(btn) {
- 
-    const playerName = btn.parentNode.children[0].innerText;
-    
-    const playerNameId = document.getElementById('orderList');
-    playerNameId.innerHTML ="";
-   
-    const obj = {
-        playerName : playerName 
-    }
-    arr.push(obj);
-    for(let i =0; i<arr.length; i++){
-        const name  =arr[i].playerName;
-        const ol = document.createElement('or');
-        ol.innerHTML=`
-        <li>${name}</li>
-        `;
-       playerNameId.appendChild(ol); 
-    }
-    if(arr.length > 5){
-        alert('you selected only five player ');
-        return ;
-      }    
-      else {
-         playerNameId.appendChild(arr);
+const btnSelects = document.querySelectorAll(".btn-select");
+const players = document.querySelectorAll(".player");
 
-      } 
+const selectedPlayerList = document.getElementById("orderList");
+
+let PlayerCount = 0;
+
+for (const selectBtn of btnSelects) {
+  selectBtn.addEventListener("click", (inner) => {
+    PlayerCount++;
+    if (PlayerCount > 5) {
+      alert("You can selected only five player ");
+    } else {
+      const selectedPlayer = SelectedPlayer(inner);
+      selectedPlayerList.appendChild(selectedPlayer);
+      inner.target.style.backgroundColor = "yellow";
+      inner.target.style.color = "red";
+      inner.target.disabled = true;
+    }
+  });
 }
 
-document.getElementById('cal-btn').addEventListener('click',function(){
- const calInput = document.getElementById('cal-input');
- const calInputValue = calInput.value ;
- const calInputValueNumber  = parseFloat(calInputValue);
+function SelectedId(inner) {
+    return inner.target.parentElement.firstElementChild.innerText;
+  }
+  
+  function SelectedPlayer(inner) {
+    const playerName = SelectedId(inner);
+    let player = document.createElement("li");
+    player.classList.add("text-red-400" );
+    player.innerText = playerName;
+    return player;
+  }
 
-})
+  const playerAll = document.getElementById("cal-input");
+  const calBtn = document.getElementById("cal-btn");
+  const  expensisAll = document.getElementById("expensis");
 
-
+calBtn.addEventListener("click", (inner) => {
+    if (playerAll.value == "" || PlayerCount === 0) {
+      alert("Enter any player ");
+    } else {
+      const perPlayerExpense =+ playerAll.value;
+      let expense =
+        PlayerCount > 5 
+        ? 5 * perPlayerExpense
+          : PlayerCount * perPlayerExpense;
+          expensisAll.innerText = `${expense}`;
+    }
+  });
+  
